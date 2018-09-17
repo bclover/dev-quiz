@@ -1,11 +1,15 @@
-# React Boilerplate
+# The Ultimate Front-End Development Quiz
 
-This is a repo that can be used to setup react projects quickly and easily.  It uses react, react-router, redux, and webpack 4.
-
-A simple application is already wired up with two views and development can be kicked off easily.
+This project is intended to be a way to playground for writing & practicing code in react and redux. It will also serve as a way to practice taking questions related to all things related to front-end development.
 
 ### Getting Started
 1. Clone the repo
 2. npm install
 3. npm start
-4. Start building your app.
+
+### Technologies Used:
+* React
+* React Router
+* Redux
+* Material UI
+* Webpack

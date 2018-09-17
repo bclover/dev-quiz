@@ -1,22 +1,58 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import './main.css';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+
+import "./main.css";
 
 export class Main extends Component {
   render() {
     return (
       <div className="wrapper">
         <section className="header">
-          <h1>React, React-Router, Redux, & Webpack 4 Boilerplate</h1>
+          <h1>The Ultimate Front-End Development Quiz</h1>
         </section>
         <section className="table-of-contents">
-          <ul>
-            <li>
-              <Link to="/view1">View 1</Link>
-            </li>
-            <li>
-              <Link to="/view2">View 2</Link>
-            </li>
+          <ul className="main-nav">
+            <Button
+              color="primary"
+              component={Link}
+              to="/a11y"
+              variant="outlined"
+            >
+              Accessibility
+            </Button>
+            <Button
+              color="primary"
+              component={Link}
+              to="/css"
+              variant="outlined"
+            >
+              CSS
+            </Button>
+            <Button
+              color="primary"
+              component={Link}
+              to="/git"
+              variant="outlined"
+            >
+              Git
+            </Button>
+            <Button
+              color="primary"
+              component={Link}
+              to="/html"
+              variant="outlined"
+            >
+              HTML
+            </Button>
+            <Button
+              color="primary"
+              component={Link}
+              to="/js"
+              variant="outlined"
+            >
+              Javascript
+            </Button>
           </ul>
         </section>
       </div>

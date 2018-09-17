@@ -1,10 +1,13 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
-import './App.css';
-import { Main } from './views/main/main.jsx';
-import { View1 } from './views/view1/view1.jsx';
-import { View2 } from './views/view2/view2.jsx';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Route } from "react-router-dom";
+import "./App.css";
+import { Main } from "./views/main/main.jsx";
+import { A11y } from "./views/a11y/a11y.jsx";
+import { Css } from "./views/css/css.jsx";
+import { Git } from "./views/git/git.jsx";
+import { Html } from "./views/html/html.jsx";
+import { Javascript } from "./views/js/javascript.jsx";
 
 class App extends Component {
   render() {
@@ -12,15 +15,17 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Route exact path="/" component={Main} />
-          <Route path="/view1" component={View1} />
-          <Route path="/view2" component={View2} />
+          <Route path="/a11y" component={A11y} />
+          <Route path="/css" component={Css} />
+          <Route path="/git" component={Git} />
+          <Route path="/html" component={Html} />
+          <Route path="/js" component={Javascript} />
         </div>
       </BrowserRouter>
-    )
+    );
   }
 }
 
 export default App;
 
-ReactDOM.render(<App />, document.getElementById('app'));
-
+ReactDOM.render(<App />, document.getElementById("app"));
