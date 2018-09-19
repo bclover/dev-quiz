@@ -8,7 +8,8 @@ router.get('/:resource', (req, res) => {
   const resource = req.params.resource;
   const controller = controllers[resource];
 
-  if(controller == null) {
+  // handle invalid api requests
+  if(controller === null) {
     res.json({
       status: 'error',
       message: 'Invalid request. "'+ resource +'" is not a valid endpoint.',
@@ -16,7 +17,36 @@ router.get('/:resource', (req, res) => {
     return;
   }
 
+  // get all question data
   controller.get()
+    .then(data => {
+      res.json({
+        status: 'success',
+        data: data,
+      });
+    })
+    .catch(err => {
+      res.json({
+        status: 'error',
+        message: err.message,
+      })
+    })
+});
+
+router.get('/:resource/:questionId', (req, res) => {
+  const resource = req.params.resource;
+  const questionId = req.params.questionId;
+
+  const controller = controllers[resource];
+  if(controller === null) {
+    res.json({
+      status: 'error',
+      message: 'Invalid request. "'+ resource +'" is not a valid endpoint.',
+    });
+    return;
+  }
+
+  controller.getByQuestionId(questionId)
     .then(data => {
       res.json({
         status: 'success',

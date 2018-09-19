@@ -14,5 +14,20 @@ module.exports = {
         })
 
     })
+  },
+
+  getByQuestionId: (questionId) => {
+    return new Promise((resolve, reject) => {
+
+      Question.find({id: questionId})
+        .then(data => {
+          resolve(data);
+        })
+        .catch(err => {
+          reject(err);
+        })
+
+    })
   }
+
 };
