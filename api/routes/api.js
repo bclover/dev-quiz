@@ -7,6 +7,7 @@ const controllers = require('../controllers');
 router.get('/:resource', (req, res) => {
   const resource = req.params.resource;
   const controller = controllers[resource];
+  const filters = req.query;
 
   // handle invalid api requests
   if(controller === null) {
@@ -18,7 +19,7 @@ router.get('/:resource', (req, res) => {
   }
 
   // get all question data
-  controller.get()
+  controller.get(filters)
     .then(data => {
       res.json({
         status: 'success',

@@ -24,7 +24,7 @@ module.exports = {
           resolve(data);
         })
         .catch(err => {
-          reject(err);
+          reject(new Error('Unable to find the question with an id of: ' + questionId));
         })
 
     })

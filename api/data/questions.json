@@ -31,5 +31,16 @@
   "correct": "c",
   "question": "Which property of a flexbox is used to control alignment of an individual flex item on the cross axis?"
 }
+{
+  "id": 4,
+  "a": "if (a === b) { console.log('Yes, they are equal!);",
+  "b": "if (a == b) { console.log('Yes, they are equal!);",
+  "c": "if (a = b) { console.log('Yes, they are equal!);",
+  "d": "if (a != b) { console.log('Yes, they are equal!);",
+  "e": "if (a !== b) { console.log('Yes, they are equal!);",
+  "category": "js",
+  "correct": "a",
+  "question": "How do you test for strict equality in Javascript?"
+}
 
 
