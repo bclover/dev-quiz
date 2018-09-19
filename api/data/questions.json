@@ -1,0 +1,35 @@
+{
+  "id": 1,
+  "a": "align-content: center",
+  "b": "align-items: center",
+  "c": "justify-content: center",
+  "d": "justify-items: center",
+  "e": "justify-items: middle",
+  "category": "css",
+  "correct": "c",
+  "question": "Which property of a flexbox is used to center content along the main-axis?"
+}
+{
+  "id": 2,
+  "a": "align-content: center",
+  "b": "align-items: center",
+  "c": "justify-content: center",
+  "d": "justify-items: center",
+  "e": "justify-items: middle",
+  "category": "css",
+  "correct": "b",
+  "question": "Which property of a flexbox is used to center content along the cross-axis?"
+}
+{
+  "id": 3,
+  "a": "justify-content",
+  "b": "align-items",
+  "c": "align-self",
+  "d": "align-content",
+  "e": "justify-self",
+  "category": "css",
+  "correct": "c",
+  "question": "Which property of a flexbox is used to control alignment of an individual flex item on the cross axis?"
+}
+
+

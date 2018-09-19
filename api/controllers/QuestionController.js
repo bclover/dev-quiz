@@ -1,0 +1,18 @@
+const Question = require('../models/Question');
+
+module.exports = {
+
+  get: (params) => {
+    return new Promise((resolve, reject) => {
+
+      Question.find(params)
+        .then(data => {
+          resolve(data);
+        })
+        .catch(err => {
+          reject(err);
+        })
+
+    })
+  }
+};

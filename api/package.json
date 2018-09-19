@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "express": "latest",
+    "mongoose": "^5.2.15",
     "rimraf": "^2.6.2"
   },
   "deploy": [

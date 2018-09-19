@@ -1,27 +1,34 @@
 // Full Documentation - https://www.turbo360.co/docs
-const turbo = require('turbo360')({site_id: process.env.TURBO_APP_ID})
-const vertex = require('vertex360')({site_id: process.env.TURBO_APP_ID})
-const router = vertex.router()
-
-/*  This is a sample API route. */
+const turbo = require('turbo360')({ site_id: process.env.TURBO_APP_ID });
+const vertex = require('vertex360')({ site_id: process.env.TURBO_APP_ID });
+const router = vertex.router();
+const controllers = require('../controllers');
 
 router.get('/:resource', (req, res) => {
-	res.json({
-		confirmation: 'success',
-		resource: req.params.resource,
-		query: req.query // from the url query string
-	})
-})
+  const resource = req.params.resource;
+  const controller = controllers[resource];
 
-router.get('/:resource/:id', (req, res) => {
-	res.json({
-		confirmation: 'success',
-		resource: req.params.resource,
-		id: req.params.id,
-		query: req.query // from the url query string
-	})
-})
+  if(controller == null) {
+    res.json({
+      status: 'error',
+      message: 'Invalid request. "'+ resource +'" is not a valid endpoint.',
+    });
+    return;
+  }
 
+  controller.get()
+    .then(data => {
+      res.json({
+        status: 'success',
+        data: data,
+      });
+    })
+    .catch(err => {
+      res.json({
+        status: 'error',
+        message: err.message,
+      })
+    })
+});
 
-
-module.exports = router
+module.exports = router;
