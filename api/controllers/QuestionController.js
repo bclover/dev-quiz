@@ -39,6 +39,18 @@ module.exports = {
         })
 
     })
+  },
+
+  put: (id, params) => {
+    return new Promise((resolve, reject) => {
+      Question.findByIdAndUpdate(id, params, {new:true})
+        .then(data => {
+          resolve(data);
+        })
+        .catch(err => {
+          reject(new Error('Unable to update question: ' + id));
+        })
+    })
   }
 
 };

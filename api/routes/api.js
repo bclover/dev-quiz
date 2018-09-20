@@ -94,5 +94,34 @@ router.post('/:resource', (req, res) => {
     })
 });
 
+// PUT - update
+router.put('/:resource/:id', (req, res) => {
+  const resource = req.params.resource;
+  const controller = controllers[resource];
+
+  // handle invalid api requests
+  if(controller === null) {
+    res.json({
+      status: 'error',
+      message: 'Invalid PUT. Unable to update the resource.',
+    });
+    return;
+  }
+
+  // get all question data
+  controller.put(req.params.id, req.body)
+    .then(data => {
+      res.json({
+        status: 'success',
+        data: data,
+      });
+    })
+    .catch(err => {
+      res.json({
+        status: 'error',
+        message: err.message,
+      })
+    })
+});
 
 module.exports = router;
