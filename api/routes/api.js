@@ -7,14 +7,14 @@ const controllers = require('../controllers');
 // GET
 router.get('/:resource', (req, res) => {
   const resource = req.params.resource;
-  const controller = controllers[resource];
+  const controller = controllers[ resource ];
   const filters = req.query;
 
   // handle invalid api requests
-  if(controller === null) {
+  if (controller === null) {
     res.json({
-      status: 'error',
-      message: 'Invalid request. "'+ resource +'" is not a valid endpoint.',
+      status : 'error',
+      message: 'Invalid request. "'+resource+'" is not a valid endpoint.',
     });
     return;
   }
@@ -24,26 +24,26 @@ router.get('/:resource', (req, res) => {
     .then(data => {
       res.json({
         status: 'success',
-        data: data,
+        data  : data,
       });
     })
     .catch(err => {
       res.json({
-        status: 'error',
+        status : 'error',
         message: err.message,
-      })
-    })
+      });
+    });
 });
 
 router.get('/:resource/:questionId', (req, res) => {
   const resource = req.params.resource;
   const questionId = req.params.questionId;
 
-  const controller = controllers[resource];
-  if(controller === null) {
+  const controller = controllers[ resource ];
+  if (controller === null) {
     res.json({
-      status: 'error',
-      message: 'Invalid request. "'+ resource +'" is not a valid endpoint.',
+      status : 'error',
+      message: 'Invalid request. "'+resource+'" is not a valid endpoint.',
     });
     return;
   }
@@ -52,28 +52,27 @@ router.get('/:resource/:questionId', (req, res) => {
     .then(data => {
       res.json({
         status: 'success',
-        data: data,
+        data  : data,
       });
     })
     .catch(err => {
       res.json({
-        status: 'error',
+        status : 'error',
         message: err.message,
-      })
-    })
+      });
+    });
 });
-
 
 // POST - create new entities
 router.post('/:resource', (req, res) => {
   const resource = req.params.resource;
-  const controller = controllers[resource];
+  const controller = controllers[ resource ];
 
   // handle invalid api requests
-  if(controller === null) {
+  if (controller === null) {
     res.json({
-      status: 'error',
-      message: 'Invalid POST. "'+ resource +'" is not a valid endpoint.',
+      status : 'error',
+      message: 'Invalid POST. "'+resource+'" is not a valid endpoint.',
     });
     return;
   }
@@ -83,45 +82,76 @@ router.post('/:resource', (req, res) => {
     .then(data => {
       res.json({
         status: 'success',
-        data: data,
+        data  : data,
       });
     })
     .catch(err => {
       res.json({
-        status: 'error',
+        status : 'error',
         message: err.message,
-      })
-    })
+      });
+    });
 });
 
 // PUT - update
 router.put('/:resource/:id', (req, res) => {
   const resource = req.params.resource;
-  const controller = controllers[resource];
+  const controller = controllers[ resource ];
 
   // handle invalid api requests
-  if(controller === null) {
+  if (controller === null) {
     res.json({
-      status: 'error',
-      message: 'Invalid PUT. Unable to update the resource.',
+      status : 'error',
+      message: 'Invalid PUT. Unable to update the question. _id: '+id,
     });
     return;
   }
 
-  // get all question data
+  // update a question using its _id from mongodb
   controller.put(req.params.id, req.body)
     .then(data => {
       res.json({
         status: 'success',
-        data: data,
+        data  : data,
       });
     })
     .catch(err => {
       res.json({
-        status: 'error',
+        status : 'error',
         message: err.message,
-      })
+      });
+    });
+});
+
+// DELETE a question
+router.delete('/:resource/:id', (req, res) => {
+  const resource = req.params.resource;
+  const controller = controllers[ resource ];
+
+  // handle invalid api requests
+  if (controller === null) {
+    res.json({
+      status : 'error',
+      message: 'Invalid DELETE. Unable to delete the question. _id: '+id,
+    });
+    return;
+  }
+
+  // delete a question using its _id from mongodb
+  controller.delete(req.params.id)
+    .then(data => {
+      res.json({
+        status: 'success',
+        data  : data,
+      });
     })
+    .catch(err => {
+      res.json({
+        status : 'error',
+        message: err.message,
+      });
+    });
+
 });
 
 module.exports = router;

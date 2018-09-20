@@ -51,6 +51,18 @@ module.exports = {
           reject(new Error('Unable to update question: ' + id));
         })
     })
+  },
+
+  delete: (id) => {
+    return new Promise((resolve, reject) => {
+      Question.findByIdAndRemove(id)
+        .then(() => {
+          resolve({id: id});
+        })
+        .catch(err => {
+          reject(new Error('Unable to delete question: ' + id));
+        })
+    })
   }
 
 };
