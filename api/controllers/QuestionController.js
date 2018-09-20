@@ -4,7 +4,6 @@ module.exports = {
 
   get: (params) => {
     return new Promise((resolve, reject) => {
-
       Question.find(params)
         .then(data => {
           resolve(data);
@@ -18,13 +17,25 @@ module.exports = {
 
   getByQuestionId: (questionId) => {
     return new Promise((resolve, reject) => {
-
       Question.find({id: questionId})
         .then(data => {
           resolve(data);
         })
         .catch(err => {
           reject(new Error('Unable to find the question with an id of: ' + questionId));
+        })
+
+    })
+  },
+
+  post: (params) => {
+    return new Promise((resolve, reject) => {
+      Question.create(params)
+        .then(data => {
+          resolve(data);
+        })
+        .catch(err => {
+          reject(new Error('Unable to create a new record:  ' + err));
         })
 
     })

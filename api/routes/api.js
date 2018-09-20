@@ -4,6 +4,7 @@ const vertex = require('vertex360')({ site_id: process.env.TURBO_APP_ID });
 const router = vertex.router();
 const controllers = require('../controllers');
 
+// GET
 router.get('/:resource', (req, res) => {
   const resource = req.params.resource;
   const controller = controllers[resource];
@@ -61,5 +62,37 @@ router.get('/:resource/:questionId', (req, res) => {
       })
     })
 });
+
+
+// POST - create new entities
+router.post('/:resource', (req, res) => {
+  const resource = req.params.resource;
+  const controller = controllers[resource];
+
+  // handle invalid api requests
+  if(controller === null) {
+    res.json({
+      status: 'error',
+      message: 'Invalid POST. "'+ resource +'" is not a valid endpoint.',
+    });
+    return;
+  }
+
+  // get all question data
+  controller.post(req.body)
+    .then(data => {
+      res.json({
+        status: 'success',
+        data: data,
+      });
+    })
+    .catch(err => {
+      res.json({
+        status: 'error',
+        message: err.message,
+      })
+    })
+});
+
 
 module.exports = router;
