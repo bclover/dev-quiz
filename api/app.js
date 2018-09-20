@@ -1,8 +1,7 @@
 // Full Documentation - https://www.turbo360.co/docs
-const vertex = require('vertex360')({site_id: process.env.TURBO_APP_ID})
+const vertex = require('vertex360')({site_id: process.env.TURBO_APP_ID});
 
 // const app = vertex.app() // initialize app
-
 
 /*	Apps can also be initialized with config options as shown in the commented out example below. Options
 	include setting views directory, static assets directory, and database settings. To see default config
@@ -22,19 +21,16 @@ const config = {
 			console.log('frontend-quiz-db successfully connected!')
 		}
 	}
-}
+};
 
 const app = vertex.app(config) // initialize app with config options
 
-
-
 // import routes
-const index = require('./routes/index')
-const api = require('./routes/api')
+const index = require('./routes/index');
+const api = require('./routes/api');
 
 // set routes
-app.use('/', index)
-app.use('/api', api) // sample API Routes
+app.use('/', index);
+app.use('/api', api); // sample API Routes
 
-
-module.exports = app
+module.exports = app;
