@@ -44,6 +44,7 @@
     "vary": "^1.1.2"
   },
   "devDependencies": {
+    "cors": "^2.8.4",
     "express": "latest",
     "mongoose": "^5.2.15",
     "rimraf": "^2.6.2"

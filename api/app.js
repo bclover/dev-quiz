@@ -1,5 +1,6 @@
 // Full Documentation - https://www.turbo360.co/docs
 const vertex = require('vertex360')({site_id: process.env.TURBO_APP_ID});
+var cors = require('cors');
 
 // const app = vertex.app() // initialize app
 
@@ -24,6 +25,7 @@ const config = {
 };
 
 const app = vertex.app(config); // initialize app with config options
+app.use(cors());
 
 // import routes
 const index = require('./routes/index');

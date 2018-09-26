@@ -1,9 +1,12 @@
-const questions = (state = [], action) => {
+import _ from 'lodash';
+import { FETCH_QUESTIONS} from '../actions';
+
+const questions = (state = {}, action) => {
   switch (action.type) {
-    case 'ACTION_ONE':
-      return action.type;
+    case FETCH_QUESTIONS:
+      return action.payload;
     default:
-      return state
+      return state;
   }
 };
 export default questions;
