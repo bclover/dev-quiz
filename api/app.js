@@ -23,7 +23,7 @@ const config = {
 	}
 };
 
-const app = vertex.app(config) // initialize app with config options
+const app = vertex.app(config); // initialize app with config options
 
 // import routes
 const index = require('./routes/index');
