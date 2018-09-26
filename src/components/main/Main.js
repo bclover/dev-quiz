@@ -14,6 +14,7 @@ class Main extends Component {
   }
 
   render() {
+    console.log('this.props: ', this.props.questions);
     return (
       <div className="wrapper">
         <section className="header">
@@ -68,4 +69,8 @@ class Main extends Component {
   }
 }
 
-export default connect(null, { fetchQuestions })(Main);
+function mapStateToProps(state) {
+  return { questions: state.questions };
+}
+
+export default connect(mapStateToProps, { fetchQuestions })(Main);
