@@ -1,10 +1,18 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+import fetchQuestions from '../../actions';
+
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 
 import "./main.css";
 
-export class Main extends Component {
+class Main extends Component {
+
+  componentDidMount() {
+    this.props.fetchQuestions();
+  }
+
   render() {
     return (
       <div className="wrapper">
@@ -59,3 +67,5 @@ export class Main extends Component {
     );
   }
 }
+
+export default connect(null, { fetchQuestions })(Main);

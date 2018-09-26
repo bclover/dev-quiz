@@ -30,6 +30,11 @@ const index = require('./routes/index');
 const api = require('./routes/api');
 
 // set routes
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 app.use('/', index);
 app.use('/api', api); // sample API Routes
 
