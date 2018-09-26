@@ -13,7 +13,13 @@ This project is intended to be a way to playground for writing & practicing code
 * Redux
 * Material UI
 * Webpack
+* MongoDB
+* Turbo 360
+* Node
 
-### Starting the Local Dev Server
-* In Terminal, change into <project-root>/api directory
-* type turbo devserver
+### Starting the Local REST API
+1. In Terminal, change into the following directory:
+```<project-root>/api directory```<br>
+
+2. Then type: (starts the server and makes the REST api avaialble)<br>
+ ```turbo devserver```
