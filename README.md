@@ -13,3 +13,7 @@ This project is intended to be a way to playground for writing & practicing code
 * Redux
 * Material UI
 * Webpack
+
+### Starting the Local Dev Server
+* In Terminal, change into <project-root>/api directory
+* type turbo devserver
